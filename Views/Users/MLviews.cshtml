@@ -1,0 +1,33 @@
+@model IEnumerable<MonsalvoPalma.Models.LpalmaTable>
+
+<h1 class="mb-4">Users</h1>
+
+<p>
+    <a href="https://lpalmausers.com" target="_blank">Website</a>
+</p>
+
+<table class="table table-striped table-hover table-bordered align-middle">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.UserId</td>
+            <td>@user.UserName</td>
+            <td>@user.UserEmail</td>
+            <td>
+                <a asp-controller="Users" asp-action="Details" asp-route-id="@user.UserId" class="btn btn-sm btn-info me-1">Details</a>
+                <a asp-controller="Users" asp-action="Edit" asp-route-id="@user.UserId" class="btn btn-sm btn-primary me-1">Edit</a>
+                <a asp-controller="Users" asp-action="Delete" asp-route-id="@user.UserId" class="btn btn-sm btn-danger">Remove</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
